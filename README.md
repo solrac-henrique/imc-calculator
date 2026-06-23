@@ -1,33 +1,43 @@
-# 📟 Calculadora de IMC · [Project Study]
-# + × ÷ - Calculadora de IMC 📟
+📟 Calculadora de IMC
 
-Este projeto foi desenvolvido com o objetivo principal de **testar meus conhecimentos e colocar em prática** os conceitos de Front-end que venho estudando. É o resultado da transição entre a teoria e a aplicação real de lógica de programação e design. 
+Aplicação web simples para cálculo do Índice de Massa Corporal (IMC), desenvolvida para praticar manipulação do DOM, validação de formulários e lógica de programação em JavaScript puro (Vanilla JS).
+
+⚙️ Funcionalidades
 
 
+ Cálculo do IMC a partir de peso e altura informados pelo usuário
+ Classificação automática do resultado (abaixo do peso, peso adequado, sobrepeso, obesidade)
+ Validação dos campos de entrada, com mensagens de erro específicas
+ Cálculo disponível tanto pelo botão quanto pela tecla Enter
+ Seção de FAQ interativa, em formato de acordeão (accordion)
 
-## Por que este projeto?
-Para consolidar meu aprendizado, decidi criar uma ferramenta funcional que me desafiasse em três frentes:
 
-1.  **Lógica com JavaScript:** Manipulação do DOM para capturar dados, realizar cálculos e gerenciar estados da interface.
-2.  **Estilização Autoral (CSS):** Criação de um layout do zero com a estética **Retro** (bordas sólidas, sombras rígidas e alto contraste).
-3.  **Estrutura Semântica:** Organização de conteúdo usando tags HTML5 puras (como `dt` e `dd` para o FAQ).
+🛠 Tecnologias
 
-## Desafios Superados
 
-* **Refatoração para Modules:** Organizar o código em módulos (`import/export`) para manter o escopo limpo e facilitar a manutenção futura.
-* **Manipulação Dinâmica (Feedback de Clique):** Utilizei a função `setTimeout` para adicionar e remover a classe `ativo` no botão de calcular. Isso cria uma resposta visual de "pressionado" que melhora a experiência do usuário.
-* **Componente de FAQ (Accordion List):** Implementei uma lógica de acordeão utilizando `nextElementSibling` e `classList.toggle`. O desafio foi mapear os elementos da lista (`dt`) e garantir que o conteúdo relacionado fosse exibido/escondido corretamente ao clicar.
-* **Encapsulamento de Funções:** O código foi organizado em funções específicas (`StartIMC` e `Iniaccordion`) para manter o escopo protegido e o script organizado.
-* **Validação de Campos:** Implementação de uma verificação simples que impede o cálculo caso os campos de Nome, Peso ou Altura estejam vazios, exibindo um aviso direto na tela.
+HTML5
+CSS3 (variáveis CSS, Flexbox)
+JavaScript (Vanilla) — manipulação do DOM, validação de formulário, eventos
 
-## Lógica de Cálculo
-O sistema aplica a fórmula padrão do IMC e utiliza o método `.toFixed(1)` para garantir que o resultado seja amigável ao usuário:
 
-$$IMC = \frac{peso}{altura^2}$$
+▶️ Como executar
 
-## Tecnologias e Métodos
-* **JavaScript (Vanilla):** `querySelector`, `addEventListener`, `classList.toggle`, `setTimeout`.
-* **CSS3:** Estilização Retro/Neo-Brutalista, layouts baseados em Flexbox.
-* **HTML5:** Estrutura de lista de definições para o FAQ.
 
----
+Clone este repositório:
+
+
+   git clone https://github.com/solrac-henrique/imc-calculator.git
+
+
+Abra o arquivo index.html diretamente no navegador.
+
+
+🧮 Lógica de cálculo
+
+O IMC é calculado pela fórmula padrão:
+
+IMC = peso (kg) / altura (m)²
+
+O resultado é então classificado em faixas (abaixo do peso, peso adequado, sobrepeso, obesidade grau I, II ou III), de acordo com os parâmetros usuais de referência.
+
+Autor: Carlos Henrique Martins
