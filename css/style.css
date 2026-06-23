@@ -1,173 +1,198 @@
-@font-face {
-    font-family: Brice-regularSemiExpanded;
-    src: url(fontes/Brice-RegularSemiExpanded.ttf);
+:root {
+  --cor-fundo: #f4f6f5;
+  --cor-card: #ffffff;
+  --cor-texto: #2b2b2b;
+  --cor-texto-claro: #6b6b6b;
+  --cor-borda: #dfe4e2;
+  --cor-botao: #8fd9a8;
+  --cor-botao-hover: #79cf95;
+  --cor-resultado-fundo: #eafaf0;
+  --cor-resultado-texto: #1f5d3a;
+  --sombra: 0 4px 14px rgba(0, 0, 0, 0.06);
 }
-@font-face {
-    font-family: VT323-Regular;
-    src: url(fontes/VT323-Regular.ttf);
+ 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+ 
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background-color: var(--cor-fundo);
+  color: var(--cor-texto);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 32px 16px;
 }
-.body{
-    background-color: beige;
+ 
+.container {
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
-
-.titulo {
-    font-size: 1.3rem;
-    font-family: Brice-regularSemiExpanded;
-    padding: 2rem;
-    text-align: center;
-    border: solid;
-    margin: 0.2rem;
-    /* border-radius: 15px; */
-
+ 
+.cabecalho {
+  text-align: center;
 }
-
-.corpo {
-    border: solid;
-    margin: 0.2rem;
-    /* border-radius: 15px; */
+ 
+.cabecalho h1 {
+  font-size: 1.7rem;
+  margin-bottom: 6px;
 }
-
-.input {
-    text-align: center;
-    margin: 1rem;
+ 
+.subtitulo {
+  color: var(--cor-texto-claro);
+  font-size: 0.9rem;
 }
-
-input[type='text'], input[type='number']{
-    padding: 1rem;
-    width: 55%;
-    border: solid;
-    border-radius: 15px;
-    background-color: transparent;
-    font-family: VT323-Regular;
+ 
+.card-calculadora,
+.card-faq {
+  background-color: var(--cor-card);
+  border-radius: 14px;
+  padding: 24px;
+  box-shadow: var(--sombra);
+  border: 1px solid var(--cor-borda);
 }
-input::placeholder{
-    text-align: left;
-    outline: none;
+ 
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
 }
-
-.botaodiv {
-    text-align: center;
+ 
+.campo label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--cor-texto-claro);
 }
-
-.botao {
-    margin: 0.6rem;
-    width: 6rem;
-    height: 2rem;
-    text-align: center;
-    border: solid;
-    border-radius: 8px;
-    font-family: VT323-Regular;
-    cursor: pointer;
-    background-color: #00FFFF;
-    box-shadow: 0px 3px 0px;
-    transition: all 0.1s;
+ 
+.campo input {
+  padding: 10px 12px;
+  border: 1px solid var(--cor-borda);
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s ease;
 }
-
-.botao.ativo{
-    box-shadow: 0px 2px 0px;
-    position: relative;
-    top: 2px;
+ 
+.campo input:focus {
+  border-color: var(--cor-botao-hover);
 }
-
-.js-resultado {
-    margin: 15px;
-    padding: 1rem;
-    text-align: center;
-    background-color: #FF3300;
-    border: solid;
-    border-radius: 8px;
-    font-family: VT323-Regular;
-    display: none;
+ 
+.botao-calcular {
+  width: 100%;
+  padding: 12px;
+  margin-top: 8px;
+  background-color: var(--cor-botao);
+  color: #1f4a2e;
+  font-weight: 700;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
 }
-
-.js-resultado.ativo {
-    animation: slide 0.3s;
-    display: block;
-    box-shadow: 0px 3px 0px ;
+ 
+.botao-calcular:hover {
+  background-color: var(--cor-botao-hover);
 }
-
-.titulofaq{
-    font-size: 2rem;
-    font-family: Brice-regularSemiExpanded;
-    padding: 1rem;
-    text-align: center;
-    margin: 0.2rem;
+ 
+.botao-calcular.pressionado {
+  transform: scale(0.97);
 }
-
-.js-accordion dt{
-    font-size: 2rem;
-    text-align: center;
-    margin: 1rem;
-    cursor: pointer;
-    font-family: VT323-Regular;
+ 
+.area-resultado {
+  margin-top: 16px;
+  min-height: 20px;
+  text-align: center;
+  font-size: 0.95rem;
 }
-
-.js-accordion dt::after{
-    content: ' ↲';
+ 
+.area-resultado.visivel {
+  background-color: var(--cor-resultado-fundo);
+  color: var(--cor-resultado-texto);
+  padding: 14px;
+  border-radius: 8px;
+  font-weight: 600;
 }
-
-.js-accordion dt.ativo::after{
-    content: ' ↰';
+ 
+.area-resultado.erro {
+  background-color: #fdecea;
+  color: #b3261e;
+  padding: 14px;
+  border-radius: 8px;
+  font-weight: 600;
 }
-
-.js-accordion dd{
-    text-align: center;
-    display: none;
-    font-family: VT323-Regular;
-    font-size: 1.5rem;
-
+ 
+.card-faq h2 {
+  font-size: 1.1rem;
+  margin-bottom: 16px;
 }
-
-.js-accordion dd.ativo{
-    display: block;
-    animation: slide 0.3s;
+ 
+.item-faq {
+  border-bottom: 1px solid var(--cor-borda);
 }
-
-.js-accordion dd:last-child{
-    margin: 1rem;
+ 
+.item-faq:last-child {
+  border-bottom: none;
 }
-
-@keyframes slide {
-    from{
-        opacity: 0;
-        max-height: 0;
-    }
-    to{
-        opacity: 1;
-        max-height: 200px;
-    }
+ 
+.pergunta-faq {
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  padding: 12px 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--cor-texto);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-
-
-.footer a{
-    position: fixed;
-    position: static;
-    display: block;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    text-align: center;
-    color: black;
-    padding: 0.3rem;
-    font-family: VT323-Regular;
-    text-decoration: none;
-    cursor: pointer;
-    font-size: 1.2rem;
+ 
+.pergunta-faq::after {
+  content: "+";
+  font-size: 1.2rem;
+  color: var(--cor-botao-hover);
+  transition: transform 0.2s ease;
 }
-
-@media (max-width: 700px) {
-  .footer a {
-    position: static;
-    display: block;
-    width: 100%;
-  }
-  .titulo {
-    padding: 1rem;
-  }
+ 
+.pergunta-faq.aberta::after {
+  transform: rotate(45deg);
+}
+ 
+.resposta-faq {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.25s ease;
+}
+ 
+.resposta-faq p {
+  padding-bottom: 12px;
+  color: var(--cor-texto-claro);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+ 
+.rodape {
+  margin-top: 24px;
+  font-size: 0.8rem;
+  color: var(--cor-texto-claro);
+}
+ 
+.rodape a {
+  color: var(--cor-resultado-texto);
+  text-decoration: none;
+}
+ 
+.rodape a:hover {
+  text-decoration: underline;
 }
