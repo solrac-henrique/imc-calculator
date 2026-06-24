@@ -65,7 +65,31 @@
     <p>Desenvolvido por Carlos Henrique &middot; <a href="https://github.com/solrac-henrique" target="_blank">GitHub</a></p>
   </footer>
 
-  <script type="module" src="./js/modules/initAccordion.js"></script>
+  <script>
+    // FAQ - Mostrar e esconder respostas
+    const botoesPergunta = document.querySelectorAll('.pergunta-faq');
+    
+    botoesPergunta.forEach(botao => {
+      botao.addEventListener('click', function() {
+        const resposta = this.nextElementSibling;
+        
+        // Fecha todas as outras respostas
+        document.querySelectorAll('.resposta-faq').forEach(item => {
+          if (item !== resposta) {
+            item.style.display = 'none';
+          }
+        });
+        
+        // Abre ou fecha a resposta clicada
+        if (resposta.style.display === 'block') {
+          resposta.style.display = 'none';
+        } else {
+          resposta.style.display = 'block';
+        }
+      });
+    });
+  </script>
+
 
     <script>
   const botaoCalcular = document.getElementById('botao-calcular');
