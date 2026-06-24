@@ -3,6 +3,7 @@ export default function Iniaccordion(){
   const ativo = 'ativo' 
   dt[0].nextElementSibling.classList.add(ativo)
   dt[0].classList.add(ativo)
+  
 
 
   function addAtivo(e){
