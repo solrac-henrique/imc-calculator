@@ -15,3 +15,4 @@ export default function Iniaccordion(){
 
   dt.forEach((i)=> i.addEventListener('click', addAtivo))
   }
+
