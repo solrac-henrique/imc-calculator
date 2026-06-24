@@ -3,7 +3,6 @@ export default function Iniaccordion(){
   const ativo = 'ativo' 
   dt[0].nextElementSibling.classList.add(ativo)
   dt[0].classList.add(ativo)
-  
 
 
   function addAtivo(e){
@@ -16,4 +15,5 @@ export default function Iniaccordion(){
 
   dt.forEach((i)=> i.addEventListener('click', addAtivo))
   }
+
 
