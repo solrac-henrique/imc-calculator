@@ -66,5 +66,63 @@
   </footer>
 
   <script type="module" src="./js/modules/initAccordion.js"></script>
+
+   <script>
+    <script>
+  const botaoCalcular = document.getElementById('botao-calcular');
+  const nomeInput = document.getElementById('campo-nome');
+  const pesoInput = document.getElementById('campo-peso');
+  const alturaInput = document.getElementById('campo-altura');
+  const areaResultado = document.getElementById('area-resultado');
+
+  botaoCalcular.addEventListener('click', function() {
+    const nome = nomeInput.value.trim();
+    const peso = parseFloat(pesoInput.value);
+    const altura = parseFloat(alturaInput.value);
+
+    if (!peso || !altura) {
+      areaResultado.innerHTML = '<p style="color: #e74c3c;">Preencha peso e altura corretamente!</p>';
+      return;
+    }
+
+    if (peso <= 0 || altura <= 0) {
+      areaResultado.innerHTML = '<p style="color: #e74c3c;">Peso e altura devem ser maiores que zero!</p>';
+      return;
+    }
+
+    const imc = peso / (altura * altura);
+    let classificacao = '';
+    let cor = '';
+
+    if (imc < 18.5) {
+      classificacao = 'Abaixo do peso';
+      cor = '#3498db';
+    } else if (imc < 25) {
+      classificacao = 'Peso normal';
+      cor = '#2ecc71';
+    } else if (imc < 30) {
+      classificacao = 'Sobrepeso';
+      cor = '#f39c12';
+    } else if (imc < 35) {
+      classificacao = 'Obesidade grau I';
+      cor = '#e67e22';
+    } else if (imc < 40) {
+      classificacao = 'Obesidade grau II';
+      cor = '#e74c3c';
+    } else {
+      classificacao = 'Obesidade grau III';
+      cor = '#c0392b';
+    }
+
+    const saudacao = nome ? `<p>Olá, <strong>${nome}</strong>!</p>` : '';
+
+    areaResultado.innerHTML = `
+      ${saudacao}
+      <p>Seu IMC é: <strong style="font-size: 24px;">${imc.toFixed(2)}</strong></p>
+      <p style="color: ${cor}; font-weight: bold;">Classificação: ${classificacao}</p>
+    `;
+  });
+</script>
+  
 </body>
 </html>
